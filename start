@@ -1,0 +1,2 @@
+docker-compose exec node echo "Container is running... starting tmux" 2>/dev/null || docker-compose up --build -d
+docker-compose exec node tmux -2 -u new -A -s "MERN" -n "MongoDB:Express:ReactJS:Node"

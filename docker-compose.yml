@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  node:
+    image: jalian/mern-dev
+    depends_on:
+      - db
+    ports:
+      - "${WEB_PORT:-8000}:${WEB_PORT:-8000}"
+      - "${WEB_DEV_PORT:-3000}:${WEB_DEV_PORT:-3000}"
+      - "${VS_CODE_PORT:-8443}:${VS_CODE_PORT:-8443}"
+    volumes:
+      - "${HOME}/Projects:/home/dev/Projects"
+      - ./additions:/home/dev/.additions
+
+    environment:
+      NODE_ENV: development
+      MONGO_URL: mongodb://db:27017/mern-starter
+      WEB_PORT: ${WEB_PORT:-8000}
+      WEB_DEV_PORT: ${WEB_DEV_PORT:-3000}
+      VS_CODE_PORT: ${VS_CODE_PORT:-8443}
+    stdin_open: true
+    tty: true
+  db:
+    image: mongo:latest
+    volumes:
+      - dbdata:/data/db
+volumes:
+  dbdata:

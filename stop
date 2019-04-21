@@ -1,1 +1,3 @@
+XSHARED=${XSHARED:-$HOME}
+export XUID=$(id -u) XGID=$(id -g) XSHARED
 docker-compose rm -sf

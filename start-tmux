@@ -3,5 +3,5 @@ XSHARED=${XSHARED:-$HOME}
 [ -z "$WEB_DEV_PORT" ] && let "WEB_DEV_PORT = $(id -u) + 3000" && export WEB_DEV_PORT
 [ -z "$VS_CODE_PORT" ] && let "VS_CODE_PORT = $(id -u) + 8443" && export VS_CODE_PORT
 export XUID=$(id -u) XGID=$(id -g) XSHARED
-docker-compose exec node echo "Container is running... starting bash" 2>/dev/null || docker-compose up --build -d
-docker-compose exec node bash
+docker-compose exec node echo "Container is running... starting tmux" 2>/dev/null || docker-compose up --build -d
+docker-compose exec node tmux -2 -u new -A -s "MERN" -n "MongoDB:Express:ReactJS:Node"

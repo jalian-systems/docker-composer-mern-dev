@@ -9,9 +9,9 @@ services:
       - "${WEB_DEV_PORT:-3000}:${WEB_DEV_PORT:-3000}"
       - "${VS_CODE_PORT:-8443}:${VS_CODE_PORT:-8443}"
     volumes:
-      - "${HOME}/Projects:/home/dev/Projects"
+      - "${XSHARED}:/home/dev/Shared"
       - ./additions:/home/dev/.additions
-
+    user: "${XUID}:${XGID}"
     environment:
       NODE_ENV: development
       MONGO_URL: mongodb://db:27017/mern-starter

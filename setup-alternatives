@@ -1,0 +1,5 @@
+for i in show-config start start-bash start-code-server start-tmux stop
+do
+  update-alternatives --install /usr/bin/dk-$i dk-$i $(pwd)/$i 1
+done
+install -D docker-compose.yml /usr/lib/dk-compose

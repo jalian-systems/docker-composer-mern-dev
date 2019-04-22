@@ -1,3 +1,0 @@
-set background=dark
-colorscheme monokai
-let g:airline_theme = "ayu_light"

@@ -1,7 +1,13 @@
+#!/bin/bash
+export COMPOSE_PROJECT_NAME=$(id -un)
+export COMPOSE_FILE=/usr/lib/dk-compose/docker-compose.yml
 XSHARED=${XSHARED:-$HOME}
+XADDITIONS=${XADDITIONS:-$HOME/.docker-mern-dev/additions}
+XCODESERVER=${XCODESERVER:-$HOME/.docker-mern-dev/code-server}
+XDBDATA=${XDBDATA:-$HOME/.docker-mern-dev/db-data}
 [ -z "$WEB_PORT" ] && let "WEB_PORT = $(id -u) + 8000" && export WEB_PORT
 [ -z "$WEB_DEV_PORT" ] && let "WEB_DEV_PORT = $(id -u) + 3000" && export WEB_DEV_PORT
 [ -z "$VS_CODE_PORT" ] && let "VS_CODE_PORT = $(id -u) + 8443" && export VS_CODE_PORT
-export XUID=$(id -u) XGID=$(id -g) XSHARED
+export XUID=$(id -u) XGID=$(id -g) XSHARED XADDITIONS XCODESERVER XDBDATA
 docker-compose exec node echo "Container is running... starting code-server" 2>/dev/null || docker-compose up --build -d
 docker-compose exec node code-server -p $VS_CODE_PORT $*

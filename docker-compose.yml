@@ -10,7 +10,8 @@ services:
       - "${VS_CODE_PORT:-8443}:${VS_CODE_PORT:-8443}"
     volumes:
       - "${XSHARED}:/home/dev/Shared"
-      - ./additions:/home/dev/.additions
+      - "${XADDITIONS}:/home/dev/.additions"
+      - "${XCODESERVER}:/home/dev/.local/share/code-server"
     user: "${XUID}:${XGID}"
     environment:
       NODE_ENV: development
@@ -23,6 +24,4 @@ services:
   db:
     image: mongo:latest
     volumes:
-      - dbdata:/data/db
-volumes:
-  dbdata:
+      - "${XDBDATA}:/data/db"

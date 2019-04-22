@@ -1,3 +1,9 @@
+#!/bin/bash
+export COMPOSE_PROJECT_NAME=$(id -un)
+export COMPOSE_FILE=/usr/lib/dk-compose/docker-compose.yml
 XSHARED=${XSHARED:-$HOME}
-export XUID=$(id -u) XGID=$(id -g) XSHARED
-docker-compose rm -sf
+XADDITIONS=${XADDITIONS:-$HOME/.docker-mern-dev/additions}
+XCODESERVER=${XCODESERVER:-$HOME/.docker-mern-dev/code-server}
+XDBDATA=${XDBDATA:-$HOME/.docker-mern-dev/db-data}
+export XUID=$(id -u) XGID=$(id -g) XSHARED XADDITIONS XCODESERVER XDBDATA
+docker-compose rm -sfv

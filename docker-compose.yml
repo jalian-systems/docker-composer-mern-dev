@@ -11,12 +11,13 @@ services:
     volumes:
       - "${XSHARED}:/home/dev/Shared"
       - "${XADDITIONS}:/home/dev/.additions"
-      - "${XCODESERVER}:/home/dev/.local/share/code-server"
+      - "${XLOCAL}:/home/dev/.local"
     user: "${XUID}:${XGID}"
     environment:
       NODE_ENV: development
       MONGO_URL: mongodb://db:27017/mern-starter
       WEB_PORT: ${WEB_PORT:-8000}
+      PORT: ${WEB_PORT:-8000}
       WEB_DEV_PORT: ${WEB_DEV_PORT:-3000}
       VS_CODE_PORT: ${VS_CODE_PORT:-8443}
     stdin_open: true

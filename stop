@@ -3,7 +3,7 @@ export COMPOSE_PROJECT_NAME=$(id -un)
 export COMPOSE_FILE=/usr/lib/dk-compose/docker-compose.yml
 XSHARED=${XSHARED:-$HOME}
 XADDITIONS=${XADDITIONS:-$HOME/.docker-mern-dev/additions}
-XCODESERVER=${XCODESERVER:-$HOME/.docker-mern-dev/code-server}
+XLOCAL=${XLOCAL:-$HOME/.docker-mern-dev/local}
 XDBDATA=${XDBDATA:-$HOME/.docker-mern-dev/db-data}
-export XUID=$(id -u) XGID=$(id -g) XSHARED XADDITIONS XCODESERVER XDBDATA
+export XUID=$(id -u) XGID=$(id -g) XSHARED XADDITIONS XLOCAL XDBDATA
 docker-compose rm -sfv

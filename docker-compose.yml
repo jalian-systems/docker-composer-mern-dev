@@ -34,5 +34,5 @@ services:
       - "${VCAP_APP_PORT:-8081}:${VCAP_APP_PORT:-8081}"
     environment:
       VCAP_APP_PORT: ${VCAP_APP_PORT:-8081}
-      ME_CONFIG_MONGODB_SERVER: db:27017
+      ME_CONFIG_MONGODB_SERVER: db
 

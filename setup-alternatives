@@ -1,5 +1,5 @@
 mkdir -p /usr/lib/dk-compose
-for i in show-config start start-bash start-code-server start-tmux stop
+for i in show-config start start-bash start-code-server start-tmux stop setup-env
 do
   install $i /usr/lib/dk-compose/dk-$i
   update-alternatives --install /usr/bin/dk-$i dk-$i /usr/lib/dk-compose/dk-$i 1

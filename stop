@@ -5,5 +5,6 @@ XSHARED=${XSHARED:-$HOME}
 XADDITIONS=${XADDITIONS:-$HOME/.docker-mern-dev/additions}
 XLOCAL=${XLOCAL:-$HOME/.docker-mern-dev/local}
 XDBDATA=${XDBDATA:-$HOME/.docker-mern-dev/db-data}
-export XUID=$(id -u) XGID=$(id -g) XSHARED XADDITIONS XLOCAL XDBDATA
+[ -z "$VCAP_APP_PORT" ] && let "VCAP_APP_PORT = $(id -u) + 8081" && export VCAP_APP_PORT
+export XUID=$(id -u) XGID=$(id -g) XSHARED XADDITIONS XLOCAL XDBDATA VCAP_APP_PORT
 docker-compose rm -sfv

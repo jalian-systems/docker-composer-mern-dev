@@ -1,7 +1,7 @@
 #!/bin/bash
 export COMPOSE_PATH_SEPARATOR=:
 export COMPOSE_PROJECT_NAME=$(id -un)
-export COMPOSE_FILE=/usr/lib/dk-compose/docker-compose.yml
+[ ! -f docker-compose.yml ] && export COMPOSE_FILE=/usr/lib/dk-compose/docker-compose.yml
 XSHARED=${XSHARED:-$HOME}
 XADDITIONS=${XADDITIONS:-$HOME/.docker-mern-dev/additions}
 XLOCAL=${XLOCAL:-$HOME/.docker-mern-dev/local}
